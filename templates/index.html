@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>To-Do Application</title>
+</head>
+
+<body>
+    <h1>To do list</h1>
+    <div>Add a new To-Do Item
+        <form action="{{url_for( 'Add')}}" method="POST">
+            <input type="text" name="todoitem">
+            <input type="submit" value="Add Tasks">
+        </form>
+
+    </div>
+    <div>
+
+        <h2> Incomplete Tasks</h2>
+        <ul style="list-style-type: none">
+            {% for item in todos %}
+            <li>
+                <a style="text-decoration: none" href="{{url_for('Complete', id=item[0])}}">&#9989;</a> {{item[1]}}
+            </li>
+
+            {% endfor %}
+        </ul>
+        <input type="submit" value="Update">
+
+
+    </div>
+    <div>
+        <h2> Complete Tasks</h2>
+        <ul style="list-style-type: none">
+            {% for item in incompletetodos %}
+            <li>
+                &#10004 {{item[1]}}
+            </li>
+
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+
+</html>
